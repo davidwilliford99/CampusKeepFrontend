@@ -1,10 +1,12 @@
-import Image from 'next/image'
+import react from "react"
+import HeroSection from '../../components/HeroSection.js'
+import Navbar from '../../components/Navbar.client.js'
 
 export default function Home() {
   return (
-    <div>
-      <h1>Welcome to the Main Page!</h1>
-      <a href='./TestPage'>Navigate to pages/TestPage.js</a>
-    </div>
+    <>
+      <Navbar/>
+      <HeroSection/>
+    </>
   )
 }

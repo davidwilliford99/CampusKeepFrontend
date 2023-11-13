@@ -1,4 +1,5 @@
 import { ChakraProvider } from '@chakra-ui/react'
+import '../src/app/globals.css';
 import react from 'react';
 
 
