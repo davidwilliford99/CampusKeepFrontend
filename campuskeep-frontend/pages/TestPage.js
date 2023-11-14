@@ -4,8 +4,8 @@ export default function TestPage() {
 
   return (
     <>
-      <h1 className="text-3xl font-bold underline">
-        Hello world!
+      <h1>
+        This is a test page to test NextJS routing
       </h1>
     </>
   );
