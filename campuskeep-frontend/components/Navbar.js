@@ -2,7 +2,7 @@
 
 import React from 'react';
 import Link from 'next/link';
-import SignUp from '../pages/sign-up';
+import SignUp from '../pages/SignUp';
 
 
 const Navbar = () => {
@@ -22,7 +22,7 @@ const Navbar = () => {
             {/* Primary Navbar items */}
             <div className="hidden md:flex items-center space-x-1">
               <Link legacyBehavior href="/"><a className="py-4 px-2 text-gray-500 hover:text-gray-700 transition duration-300">Home</a></Link>
-              <Link legacyBehavior href="/lost-items"><a className="py-4 px-2 text-gray-500 hover:text-gray-700 transition duration-300">Lost Items</a></Link>
+              <Link legacyBehavior href="/LostItems"><a className="py-4 px-2 text-gray-500 hover:text-gray-700 transition duration-300">Lost Items</a></Link>
               <Link legacyBehavior href="/categories"><a className="py-4 px-2 text-gray-500 hover:text-gray-700 transition duration-300">Categories</a></Link>
             </div>
           </div>

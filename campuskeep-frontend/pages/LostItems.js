@@ -1,6 +1,6 @@
 // DisplayListings.js
 import React from 'react';
-import Listing from '../components/Listings';
+import Listing from '../components/Listing';
 
 const DisplayListings = () => {
   // Dummy data for the listings
