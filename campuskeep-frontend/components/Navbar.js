@@ -28,7 +28,7 @@ const Navbar = () => {
           </div>
           {/* Secondary Navbar items */}
           <div className="hidden md:flex items-center space-x-3 ">
-            <Link legacyBehavior href="/sign-up"><a className="py-2 px-2 font-medium text-gray-500 hover:text-gray-700 transition duration-300">Sign Up / Sign In</a></Link>
+            <Link legacyBehavior href="SignUp"><a className="py-2 px-2 font-medium text-gray-500 hover:text-gray-700 transition duration-300">Sign Up / Sign In</a></Link>
           </div>
         </div>
       </div>
