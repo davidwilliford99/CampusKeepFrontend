@@ -1,5 +1,9 @@
+// use client
+
 import React from 'react';
 import Link from 'next/link';
+import SignUp from '../pages/sign-up';
+
 
 const Navbar = () => {
   return (
