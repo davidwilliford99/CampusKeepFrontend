@@ -27,6 +27,7 @@ const SignUp = () => {
         </label>
         <br />
         <button type="submit">Sign Up</button>
+        <br />
         <Link legacyBehavior href="/Login"><a className="py-4 px-2 text-gray-500 hover:text-gray-700 transition duration-300">Already have an account.</a></Link>
       </form>
     </div>
