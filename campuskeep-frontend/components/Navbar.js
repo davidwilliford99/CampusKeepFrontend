@@ -1,19 +1,8 @@
-"use client"
-
-import React, { useState } from 'react';
-import Link from 'next/link';
-import { useRouter } from 'next/router';
+// Navbar.js
+import React from 'react';
 import { Box, Menu, MenuButton, MenuList, MenuItem } from '@chakra-ui/react';
 
-const Navbar = () => {
-  const router = useRouter();
-  const [selectedCategory, setSelectedCategory] = useState('');
-
-  const handleCategoryChange = (category) => {
-    setSelectedCategory(category);
-    router.push(`/LostItems?category=${category}`);
-  };
-
+const Navbar = ({ handleCategoryChange }) => {
   return (
     <nav className="bg-neutral-200 shadow-lg">
       <div className="max-w-6xl mx-auto px-4">
@@ -34,9 +23,7 @@ const Navbar = () => {
             </div>
             {/* Primary Navbar items */}
             <div className="hidden md:flex items-center space-x-1">
-              <Link legacyBehavior href="/">
-                <a className="py-4 px-2 text-gray-500 hover:text-gray-700 transition duration-300">Home</a>
-              </Link>
+              <a href="/" className="py-4 px-2 text-gray-500 hover:text-gray-700 transition duration-300">Home</a>
               {/* Updated Categories link with dropdown menu */}
               <Menu>
                 <MenuButton as="a" className="py-4 px-2 text-gray-500 hover:text-gray-700 transition duration-300">
@@ -49,16 +36,12 @@ const Navbar = () => {
                 </MenuList>
               </Menu>
               {/* End of updated Categories link */}
-              <Link legacyBehavior href="/LostItems">
-                <a className="py-4 px-2 text-gray-500 hover:text-gray-700 transition duration-300">Lost Items</a>
-              </Link>
+              <a href="/LostItems" className="py-4 px-2 text-gray-500 hover:text-gray-700 transition duration-300">Lost Items</a>
             </div>
           </div>
           {/* Secondary Navbar items */}
           <div className="hidden md:flex items-center space-x-3 ">
-            <Link legacyBehavior href="SignUp">
-              <a className="py-2 px-2 font-medium text-gray-500 hover:text-gray-700 transition duration-300">Sign Up / Sign In</a>
-            </Link>
+            <a href="SignUp" className="py-2 px-2 font-medium text-gray-500 hover:text-gray-700 transition duration-300">Sign Up / Sign In</a>
           </div>
         </div>
       </div>

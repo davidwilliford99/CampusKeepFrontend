@@ -1,3 +1,4 @@
+// DisplayListings.js
 import React, { useState, useEffect } from 'react';
 import Listing from '../components/Listing';
 import { Box, Select } from '@chakra-ui/react';
@@ -15,6 +16,11 @@ const DisplayListings = () => {
     setSelectedCategory(category || '');
   }, [router.query]);
 
+  const handleCategoryChange = (category) => {
+    setSelectedCategory(category);
+    router.push(`/LostItems?category=${category}`);
+  };
+
   // Dummy data for the listings
   const listingsData = [
     { id: 1, title: 'iphone 11', description: 'Found by the cupola', image: '/images/dummyitem.webp', category: 'Electronics' },
@@ -26,15 +32,9 @@ const DisplayListings = () => {
     ? listingsData.filter((listing) => listing.category === selectedCategory)
     : listingsData;
 
-  const handleCategoryChange = (e) => {
-    const category = e.target.value;
-    setSelectedCategory(category);
-    router.push(`/LostItems?category=${category}`);
-  };
-
   return (
     <>
-      <Navbar selectedCategory={selectedCategory} handleCategoryChange={handleCategoryChange} />
+      <Navbar handleCategoryChange={handleCategoryChange} />
       <div className="flex items-center justify-center h-screen bg-violet-900 text-black-200">
         <Box
           w="700px"
@@ -55,7 +55,7 @@ const DisplayListings = () => {
             placeholder="All Categories"
             mb="4"
             value={selectedCategory}
-            onChange={handleCategoryChange}
+            onChange={(e) => handleCategoryChange(e.target.value)}
           >
             <option value="Electronics">Electronics</option>
             <option value="Clothing">Clothing</option>
