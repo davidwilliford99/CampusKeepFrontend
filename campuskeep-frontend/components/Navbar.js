@@ -1,8 +1,19 @@
-// Navbar.js
-import React from 'react';
+"use client"
+
+import React, { useState } from 'react';
+import Link from 'next/link';
+import { useRouter } from 'next/router';
 import { Box, Menu, MenuButton, MenuList, MenuItem } from '@chakra-ui/react';
 
-const Navbar = ({ handleCategoryChange }) => {
+const Navbar = () => {
+  
+  const [selectedCategory, setSelectedCategory] = useState('');
+
+  const handleCategoryChange = (category) => {
+    setSelectedCategory(category);
+    router.push(`/LostItems?category=${category}`);
+  };
+
   return (
     <nav className="bg-neutral-200 shadow-lg">
       <div className="max-w-6xl mx-auto px-4">
@@ -23,25 +34,43 @@ const Navbar = ({ handleCategoryChange }) => {
             </div>
             {/* Primary Navbar items */}
             <div className="hidden md:flex items-center space-x-1">
-              <a href="/" className="py-4 px-2 text-gray-500 hover:text-gray-700 transition duration-300">Home</a>
+              <Link legacyBehavior href="/">
+                <a className="py-4 px-2 text-gray-500 hover:text-gray-700 transition duration-300">Home</a>
+              </Link>
               {/* Updated Categories link with dropdown menu */}
               <Menu>
                 <MenuButton as="a" className="py-4 px-2 text-gray-500 hover:text-gray-700 transition duration-300">
                   Categories
                 </MenuButton>
                 <MenuList>
-                  <MenuItem onClick={() => handleCategoryChange('Electronics')}>Electronics</MenuItem>
-                  <MenuItem onClick={() => handleCategoryChange('Clothing')}>Clothing</MenuItem>
-                  <MenuItem onClick={() => handleCategoryChange('Headphones')}>Headphones</MenuItem>
+                  <MenuItem>
+                    <Link legacyBehavior href="/electronics">
+                      <a>Electronics</a>
+                    </Link>
+                  </MenuItem>
+                  <MenuItem>
+                    <Link legacyBehavior href="/clothing">
+                      <a>Clothing</a>
+                    </Link>
+                  </MenuItem>
+                  <MenuItem>
+                    <Link legacyBehavior href="/headphones">
+                      <a>Headphones</a>
+                    </Link>
+                  </MenuItem>
                 </MenuList>
               </Menu>
               {/* End of updated Categories link */}
-              <a href="/LostItems" className="py-4 px-2 text-gray-500 hover:text-gray-700 transition duration-300">Lost Items</a>
+              <Link legacyBehavior href="/LostItems">
+                <a className="py-4 px-2 text-gray-500 hover:text-gray-700 transition duration-300">Lost Items</a>
+              </Link>
             </div>
           </div>
           {/* Secondary Navbar items */}
           <div className="hidden md:flex items-center space-x-3 ">
-            <a href="SignUp" className="py-2 px-2 font-medium text-gray-500 hover:text-gray-700 transition duration-300">Sign Up / Sign In</a>
+            <Link legacyBehavior href="SignUp">
+              <a className="py-2 px-2 font-medium text-gray-500 hover:text-gray-700 transition duration-300">Sign Up / Sign In</a>
+            </Link>
           </div>
         </div>
       </div>
