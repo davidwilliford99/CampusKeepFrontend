@@ -41,7 +41,7 @@ function Login() {
         </div>
       ) : (
         <div className="w-96 p-8 bg-white rounded shadow-md">
-          <h1 className="text-4xl text-purple-500 font-bold mb-6">Login</h1>
+          <h1 className="text-4xl text-violet-900 font-bold mb-6">Login</h1>
           <label className="mb-4 block">
             Username:
             <input
@@ -63,7 +63,7 @@ function Login() {
           </label>
           <br />
           <button
-            className="bg-purple-500 text-white py-2 px-4 rounded hover:bg-purple-700 focus:outline-none focus:ring focus:border-purple-300"
+            className="bg-yellow-300 text-black font-bold py-2 px-4 rounded hover:bg-purple-700 focus:outline-none focus:ring focus:border-purple-300"
             onClick={handleLogin}
           >
             Login

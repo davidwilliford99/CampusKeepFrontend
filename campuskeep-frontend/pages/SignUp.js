@@ -32,7 +32,7 @@ const SignUp = () => {
       </Box>
 
       <div className="w-96 p-8 bg-white rounded shadow-md">
-        <h2 className='text-4xl text-purple-500 font-bold mb-6'>Sign Up</h2>
+        <h2 className='text-4xl text-violet-900 font-bold mb-6'>Sign Up</h2>
         <form className='text-gray-800' onSubmit={handleSignUp}>
           <label className='mb-4 block'>
             Email:
@@ -42,7 +42,7 @@ const SignUp = () => {
             Password:
             <input className='border p-2 w-full rounded focus:outline-none focus:ring focus:border-purple-500' type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
           </label>
-          <button className='bg-purple-500 text-white py-2 px-4 rounded hover:bg-purple-700 focus:outline-none focus:ring focus:border-purple-300' type="submit">Sign Up</button>
+          <button className='bg-yellow-300 text-black font-bold py-2 px-4 rounded hover:bg-purple-700 focus:outline-none focus:ring focus:border-purple-300' type="submit">Sign Up</button>
           <br />
           <Link href="/Login" legacyBehavior>
             <a className="block mt-4 text-gray-500 hover:text-gray-700 transition duration-300">Already have an account? Login here</a>
