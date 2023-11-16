@@ -1,6 +1,7 @@
 import React from 'react';
 
-const Listing = ({ title, description, image, category , SecQ1, SecQ2, SecQ3 }) => {
+const Listing = ({id, title, description, image, category , SecQ1, SecQ2, SecQ3 }) => {
+  
   return (
     <div className="p-4 mb-4 border rounded-md shadow-md bg-yellow-100 transition-transform duration-300 hover:transform hover:scale-105">
       <img src={image} alt={title} className="mb-2 rounded-md" />
@@ -11,6 +12,7 @@ const Listing = ({ title, description, image, category , SecQ1, SecQ2, SecQ3 }) 
       
     </div>
   );
+
 };
 
 export default Listing;
