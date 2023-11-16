@@ -2,6 +2,8 @@
 import React, { useState } from 'react';
 import SignUp from './SignUp';
 import Link from 'next/link';
+import { Box, Input, Button, Link as ChakraLink, Text } from '@chakra-ui/react';
+import Navbar from '../components/Navbar';
 
 function Login() {
   const [username, setUsername] = useState('');
@@ -18,29 +20,42 @@ function Login() {
   };
 
   return (
-    <div className="flex items-center justify-center h-screen bg-purple-900 text-yellow-200">
+    <>
+    <Navbar/>
+    <div className="flex items-center justify-center h-screen bg-violet-900 text-black-200">
+    <Box
+      w="700px"
+      h= "400px"
+      bgImage="url('/images/campuskeep-removebg.png')"
+      bgPosition="center"
+      bgRepeat="no-repeat"
+      bgSize="cover"
+      display="flex"
+      alignItems="center"
+      justifyContent="center"
+    ></Box>
       {loggedIn ? (
         <div>
           <h1 className="text-4xl font-bold">Welcome, {username}!</h1>
           <p>You are now logged in.</p>
         </div>
       ) : (
-        <div className="text-center">
-          <h1 className="text-4xl font-bold mb-4">Login Page</h1>
-          <label className="block mb-2">
+        <div className="w-96 p-8 bg-white rounded shadow-md">
+          <h1 className="text-4xl text-purple-500 font-bold mb-6">Login</h1>
+          <label className="mb-4 block">
             Username:
             <input
-              className="border p-2 rounded"
+              className="border p-2 w-full rounded focus:outline-none focus:ring focus:border-purple-500"
               type="text"
               value={username}
               onChange={(e) => setUsername(e.target.value)}
             />
           </label>
           <br />
-          <label className="block mb-2">
+          <label className="mb-4 block">
             Password:
-            <input
-              className="border p-2 rounded"
+            <input 
+              className="border p-2 w-full rounded focus:outline-none focus:ring focus:border-purple-500"
               type="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
@@ -48,7 +63,7 @@ function Login() {
           </label>
           <br />
           <button
-            className="bg-yellow-400 text-purple-900 py-2 px-4 rounded"
+            className="bg-purple-500 text-white py-2 px-4 rounded hover:bg-purple-700 focus:outline-none focus:ring focus:border-purple-300"
             onClick={handleLogin}
           >
             Login
@@ -62,6 +77,7 @@ function Login() {
         </div>
       )}
     </div>
+    </>
   );
 }
 
