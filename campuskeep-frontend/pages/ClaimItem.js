@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
-import { Box, Text, Input, Stack, Button, Flex } from '@chakra-ui/react';
+import { Box, Text, Input, Stack, Button } from '@chakra-ui/react';
 import Navbar from '../components/Navbar';
 
 const ClaimItem = () => {
@@ -8,12 +8,14 @@ const ClaimItem = () => {
   const { id } = router.query;
 
   // Dummy data for the listings
+  const listingsData = [
+    { id: 1, title: 'iphone 11', description: 'Found by the cupola', image: '/images/dummyitem.webp' },
+    { id: 2, title: 'ECU Hoodie', description: 'I found this hoodie in the Isley innovation hub, Id like to get it back to its owner!', image: '/images/dummyitem2.jpg' },
+    { id: 3, title: 'airpods', description: 'Found sum airpods', image: '/images/dummyitem3.jpg' },
+  ];
+
   const [claimedItems, setClaimedItems] = useState([]);
   const [currentItem, setCurrentItem] = useState(null);
-
-  const listingsData = [
-    { id: 1, title: 'iPhone 11', description: 'Found by the cupola', image: '/images/dummyitem.webp' },
-  ];
 
   useEffect(() => {
     // Find the item based on the ID from the route parameters
@@ -39,7 +41,7 @@ const ClaimItem = () => {
                 <h2 className="text-xl mb-2 text-grey-300">{currentItem.title}</h2>
                 <p className="text-gray-600">{currentItem.description}</p>
                 {claimedItems.includes(currentItem.id) && (
-                  <Text color="red.500">Item claimed!</Text>
+                  <Text color="red.500">Claim submitted! Now wait for the finder to respond</Text>
                 )}
               </div>
               <Stack spacing={4} ml={4}>
