@@ -1,16 +1,6 @@
-// use client 
-//here is davids campus keep link if you want it.
-/*<Link legacyBehavior href="/">
-                <a className="flex items-center py-4 px-2">
-                  <span className="font-semibold text-gray-500 text-lg">Campus Keep</span>
-                </a>
-              </Link>*/
-
 import React from 'react';
 import Link from 'next/link';
-import SignUp from '../pages/SignUp';
-import { Box, Text, VStack, ChakraProvider } from '@chakra-ui/react';
-
+import { Box, Menu, MenuButton, MenuList, MenuItem } from '@chakra-ui/react';
 
 const Navbar = () => {
   return (
@@ -19,30 +9,57 @@ const Navbar = () => {
         <div className="flex justify-between">
           <div className="flex space-x-7">
             <div>
-            <Box
-        w="200px"
-        h="80px"
-        bgImage="url('/images/campuskeep-removebg.png')"
-        bgPosition="center"
-        bgRepeat="no-repeat"
-        bgSize="cover"
-        display="flex"
-        alignItems="center"
-        justifyContent="center"
-      >
-      </Box>
-              
+              <Box
+                w="200px"
+                h="80px"
+                bgImage="url('/images/campuskeep-removebg.png')"
+                bgPosition="center"
+                bgRepeat="no-repeat"
+                bgSize="cover"
+                display="flex"
+                alignItems="center"
+                justifyContent="center"
+              ></Box>
             </div>
             {/* Primary Navbar items */}
             <div className="hidden md:flex items-center space-x-1">
-              <Link legacyBehavior href="/"><a className="py-4 px-2 text-gray-500 hover:text-gray-700 transition duration-300">Home</a></Link>
-              <Link legacyBehavior href="/LostItems"><a className="py-4 px-2 text-gray-500 hover:text-gray-700 transition duration-300">Lost Items</a></Link>
-              <Link legacyBehavior href="/categories"><a className="py-4 px-2 text-gray-500 hover:text-gray-700 transition duration-300">Categories</a></Link>
+              <Link legacyBehavior href="/">
+                <a className="py-4 px-2 text-gray-500 hover:text-gray-700 transition duration-300">Home</a>
+              </Link>
+              {/* Updated Categories link with dropdown menu */}
+              <Menu>
+                <MenuButton as="a" className="py-4 px-2 text-gray-500 hover:text-gray-700 transition duration-300">
+                  Categories
+                </MenuButton>
+                <MenuList>
+                  <MenuItem>
+                    <Link legacyBehavior href="/electronics">
+                      <a>Electronics</a>
+                    </Link>
+                  </MenuItem>
+                  <MenuItem>
+                    <Link legacyBehavior href="/clothing">
+                      <a>Clothing</a>
+                    </Link>
+                  </MenuItem>
+                  <MenuItem>
+                    <Link legacyBehavior href="/headphones">
+                      <a>Headphones</a>
+                    </Link>
+                  </MenuItem>
+                </MenuList>
+              </Menu>
+              {/* End of updated Categories link */}
+              <Link legacyBehavior href="/LostItems">
+                <a className="py-4 px-2 text-gray-500 hover:text-gray-700 transition duration-300">Lost Items</a>
+              </Link>
             </div>
           </div>
           {/* Secondary Navbar items */}
           <div className="hidden md:flex items-center space-x-3 ">
-            <Link legacyBehavior href="SignUp"><a className="py-2 px-2 font-medium text-gray-500 hover:text-gray-700 transition duration-300">Sign Up / Sign In</a></Link>
+            <Link legacyBehavior href="SignUp">
+              <a className="py-2 px-2 font-medium text-gray-500 hover:text-gray-700 transition duration-300">Sign Up / Sign In</a>
+            </Link>
           </div>
         </div>
       </div>
@@ -51,6 +68,3 @@ const Navbar = () => {
 };
 
 export default Navbar;
-
-
-
