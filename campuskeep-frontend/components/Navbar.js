@@ -1,8 +1,19 @@
-import React from 'react';
+"use client"
+
+import React, { useState } from 'react';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 import { Box, Menu, MenuButton, MenuList, MenuItem } from '@chakra-ui/react';
 
 const Navbar = () => {
+  const router = useRouter();
+  const [selectedCategory, setSelectedCategory] = useState('');
+
+  const handleCategoryChange = (category) => {
+    setSelectedCategory(category);
+    router.push(`/LostItems?category=${category}`);
+  };
+
   return (
     <nav className="bg-neutral-200 shadow-lg">
       <div className="max-w-6xl mx-auto px-4">
@@ -32,21 +43,9 @@ const Navbar = () => {
                   Categories
                 </MenuButton>
                 <MenuList>
-                  <MenuItem>
-                    <Link legacyBehavior href="/electronics">
-                      <a>Electronics</a>
-                    </Link>
-                  </MenuItem>
-                  <MenuItem>
-                    <Link legacyBehavior href="/clothing">
-                      <a>Clothing</a>
-                    </Link>
-                  </MenuItem>
-                  <MenuItem>
-                    <Link legacyBehavior href="/headphones">
-                      <a>Headphones</a>
-                    </Link>
-                  </MenuItem>
+                  <MenuItem onClick={() => handleCategoryChange('Electronics')}>Electronics</MenuItem>
+                  <MenuItem onClick={() => handleCategoryChange('Clothing')}>Clothing</MenuItem>
+                  <MenuItem onClick={() => handleCategoryChange('Headphones')}>Headphones</MenuItem>
                 </MenuList>
               </Menu>
               {/* End of updated Categories link */}
