@@ -27,7 +27,7 @@ const DisplayListings = () => {
         justifyContent="center"
       >
       </Box>
-      <div className="w-1/2 p-8 bg-purple-300 rounded shadow-md">
+      <div className="w-1/2 p-8 bg-neutral-200 rounded shadow-md">
         <h1 className="text-4xl font-bold mb-8 text-black-200">Recently found items</h1>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {listingsData.map((listing, index) => (

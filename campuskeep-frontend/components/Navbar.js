@@ -14,7 +14,7 @@ import { Box, Text, VStack, ChakraProvider } from '@chakra-ui/react';
 
 const Navbar = () => {
   return (
-    <nav className="bg-purple-300 shadow-lg">
+    <nav className="bg-neutral-200 shadow-lg">
       <div className="max-w-6xl mx-auto px-4">
         <div className="flex justify-between">
           <div className="flex space-x-7">
