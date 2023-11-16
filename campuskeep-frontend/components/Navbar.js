@@ -44,17 +44,17 @@ const Navbar = () => {
                 </MenuButton>
                 <MenuList>
                   <MenuItem>
-                    <Link legacyBehavior href="/electronics">
+                    <Link legacyBehavior href="/LostItems?category=Electronics">
                       <a>Electronics</a>
                     </Link>
                   </MenuItem>
                   <MenuItem>
-                    <Link legacyBehavior href="/clothing">
+                    <Link legacyBehavior href="/LostItems?category=Clothing">
                       <a>Clothing</a>
                     </Link>
                   </MenuItem>
                   <MenuItem>
-                    <Link legacyBehavior href="/headphones">
+                    <Link legacyBehavior href="/LostItems?category=Headphones">
                       <a>Headphones</a>
                     </Link>
                   </MenuItem>
