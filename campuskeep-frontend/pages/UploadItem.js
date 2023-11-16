@@ -31,7 +31,7 @@ const UploadItem = () => {
           <h1 className="text-4xl font-bold mb-4 text-violet-900">Upload an Item</h1>
           <form onSubmit={handleUpload} className="space-y-4">
             <div>
-              <label className="block text-black-300">Item Name:</label>
+              <label className="block text-black-300 font-bold">Item Name:</label>
               <input
                 type="text"
                 value={itemName}
@@ -42,7 +42,7 @@ const UploadItem = () => {
             </div>
 
             <div>
-              <label className="block text-black-300">Item Category:</label>
+              <label className="block text-black-300 font-bold">Item Category:</label>
               <Select
                 value={category}
                 onChange={(e) => setCategory(e.target.value)}
@@ -57,7 +57,7 @@ const UploadItem = () => {
             </div>
 
             <div>
-              <label className="block text-black-300">Item Description:</label>
+              <label className="block text-black-300 font-bold">Item Description:</label>
               <input
                 type="text"
                 value={description}
@@ -68,7 +68,7 @@ const UploadItem = () => {
             </div>
 
             <div>
-              <label className="block text-black-300">Item Image:</label>
+              <label className="block text-black-300 font-bold">Item Image:</label>
               <input
                 type="file"
                 accept="image/*"
@@ -79,7 +79,7 @@ const UploadItem = () => {
             </div>
 
             <div>
-              <label className="block text-black-300">Security Question 1:</label>
+              <label className="block text-black-300 font-bold">Security Question 1:</label>
               <input
                 type="text"
                 value={SecQ1}
@@ -90,7 +90,7 @@ const UploadItem = () => {
             </div>
 
             <div>
-              <label className="block text-black-300">Security Question 2:</label>
+              <label className="block text-black-300 font-bold">Security Question 2:</label>
               <input
                 type="text"
                 value={SecQ2}
@@ -101,7 +101,7 @@ const UploadItem = () => {
             </div>
 
             <div>
-              <label className="block text-black-300">Security Question 3:</label>
+              <label className="block text-black-300 font-bold">Security Question 3:</label>
               <input
                 type="text"
                 value={SecQ3}
