@@ -15,18 +15,19 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="bg-neutral-200 shadow-lg">
+    <nav className="bg-white shadow-lg" style={{height: "12vh"}}>
       <div className="max-w-6xl mx-auto px-4">
         <div className="flex justify-between">
           <div className="flex space-x-7">
-            <div>
+            <div className='mb-2'>
               <Box
                 w="200px"
                 h="80px"
-                bgImage="url('/images/campuskeep-removebg.png')"
+                pb="10px"
+                bgImage="url('/images/ecu-logo.png')"
                 bgPosition="center"
                 bgRepeat="no-repeat"
-                bgSize="cover"
+                bgSize="30%"
                 display="flex"
                 alignItems="center"
                 justifyContent="center"
@@ -42,7 +43,7 @@ const Navbar = () => {
                 <MenuButton as="a" className="py-4 px-2 text-gray-500 hover:text-gray-700 transition duration-300">
                   Categories
                 </MenuButton>
-                <MenuList>
+                <MenuList className='bg-white text-black'>
                   <MenuItem>
                     <Link legacyBehavior href="/LostItems?category=Electronics">
                       <a>Electronics</a>
@@ -69,7 +70,7 @@ const Navbar = () => {
           {/* Secondary Navbar items */}
           <div className="hidden md:flex items-center space-x-3 ">
             <Link legacyBehavior href="SignUp">
-              <a className="py-2 px-2 font-medium text-gray-500 hover:text-gray-700 transition duration-300">Sign Up / Sign In</a>
+              <a className="py-2 px-5 rounded-lg bg-purple-800 font-medium text-white hover:bg-purple-900 transition duration-300">Sign Up / Sign In</a>
             </Link>
           </div>
         </div>
