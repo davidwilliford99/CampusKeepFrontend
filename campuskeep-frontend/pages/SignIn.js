@@ -5,20 +5,18 @@ import React, { useState } from 'react';
 import Link from 'next/link';
 import Navbar from '../components/Navbar';
 import axios from 'axios';
+import { useRouter } from 'next/router';
 
-const SignUp = () => {
+const SignIn = () => {
   
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [message, setMessage] = useState('');
   const [isError, setIsError] = useState(false);
-  const [imageUrl, setImageUrl] = useState('');
+  const router = useRouter();
 
   const [formData, setFormData] = useState({
-    username: '',
     password: '',
-    first_name: '',
-    last_name: '',
     email: ''
   });
 
@@ -28,15 +26,20 @@ const SignUp = () => {
       setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSignUp = async (e) => {
+  const handleSignIn = async (e) => {
     e.preventDefault();
     setMessage('');
     setIsError(false);
 
     try {
         console.log(formData)
-        const response = await axios.post('http://127.0.0.1:8000/createUser/', formData);
+        const response = await axios.post('http://127.0.0.1:8000/users/login/', formData);
         setMessage(response.data.message);
+
+        const timer = setTimeout(() => {
+          router.push('/');
+        }, 2000);
+        
     } 
     catch (error) {
         setIsError(true);
@@ -55,10 +58,10 @@ const SignUp = () => {
   return (
     <>
     <Navbar/>
-    <div className='flex items-center justify-center bg-purple-900 text-white'>
+    <div className='flex items-center justify-center min-h-screen bg-purple-900 text-white'>
       <img className='w-1/3' src='/images/campuskeep-removebg.png'/>
       <div className="w-96 p-8 my-20 rounded border border-black shadow-2xl">
-        <h2 className='text-4xl font-bold mb-6'>Create Account</h2>
+        <h2 className='text-4xl font-bold mb-6'>Sign In</h2>
 
         {message && (
           <div 
@@ -69,7 +72,7 @@ const SignUp = () => {
           </div>
         )}
 
-        <form className='border-solid' onSubmit={handleSignUp}>
+        <form className='border-solid' onSubmit={handleSignIn}>
           <label className='mb-4 block'>
             Email:
             <input 
@@ -81,36 +84,6 @@ const SignUp = () => {
               type="text"/>
           </label>
           <label className='mb-4 block'>
-            Username:
-            <input 
-              required
-              name='username'
-              value={formData.username} 
-              onChange={handleChange}
-              className='border bg-purple-900 p-2 w-full rounded focus:outline-none focus:ring focus:border-purple-500' 
-              type="text" />
-          </label>
-          <label className='mb-4 block'>
-            First Name:
-            <input 
-              required
-              name='first_name'
-              value={formData.first_name} 
-              onChange={handleChange}
-              className='border bg-purple-900 p-2 w-full rounded focus:outline-none focus:ring focus:border-purple-500' 
-              type="text" />
-          </label>
-          <label className='mb-4 block'>
-            Last Name:
-            <input 
-              required
-              name='last_name'
-              value={formData.last_name} 
-              onChange={handleChange}
-              className='border bg-purple-900 p-2 w-full rounded focus:outline-none focus:ring focus:border-purple-500' 
-              type="text" />
-          </label>
-          <label className='mb-4 block'>
             Password:
             <input 
               required
@@ -120,10 +93,10 @@ const SignUp = () => {
               className='border bg-purple-900 p-2 w-full rounded focus:outline-none focus:ring focus:border-purple-500' 
               type="password" />
           </label>
-          <button className='bg-yellow-500 text-white font-bold py-2 px-4 rounded-md hover:bg-yellow-600 focus:outline-none focus:ring focus:border-purple-300' type="submit">Sign Up</button>
+          <button className='bg-yellow-500 text-white font-bold py-2 px-4 rounded-md hover:bg-yellow-600 focus:outline-none focus:ring focus:border-purple-300' type="submit">Sign In</button>
           <br />
-          <Link href="/SignIn" legacyBehavior>
-            <a className="block mt-4 text-gray-300 hover:text-gray-700 transition duration-300">Already have an account? Login here</a>
+          <Link href="/SignUp" legacyBehavior>
+            <a className="block mt-4 text-gray-300 hover:text-gray-700 transition duration-300">Create An Account</a>
           </Link>
         </form>
       </div>
@@ -132,4 +105,4 @@ const SignUp = () => {
   );
 };
 
-export default SignUp;
+export default SignIn;

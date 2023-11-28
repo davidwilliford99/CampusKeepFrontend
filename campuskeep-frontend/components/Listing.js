@@ -5,7 +5,15 @@ const Listing = (props) => {
   const id = props.id;
   const name = props.name;
   const description = props.description;
-  const category = props.category
+  const category = props.category;
+
+  const [image, setImage] = useState('');
+
+
+  // setting default image
+
+
+
   
   return (
     <div className="p-4 mb-4 border rounded-md shadow-md bg-white transition-transform duration-300 hover:transform hover:scale-105">

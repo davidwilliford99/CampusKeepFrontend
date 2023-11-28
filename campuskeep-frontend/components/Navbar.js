@@ -65,13 +65,16 @@ const Navbar = () => {
               <Link legacyBehavior href="/LostItems">
                 <a className="py-4 px-4 text-gray-500 hover:text-gray-700 transition duration-300">Lost Items</a>
               </Link>
-              <Link legacyBehavior href="/MessagesView">
-                <a className="py-4 px-4 text-gray-500 hover:text-gray-700 transition duration-300">View your Messages</a>
+              <Link legacyBehavior href="/UploadItem">
+                <a className="py-4 px-4 text-gray-500 hover:text-gray-700 transition duration-300">Upload Item</a>
               </Link>
             </div>
           </div>
           {/* Secondary Navbar items */}
           <div className="hidden md:flex items-center space-x-3 ">
+            <Link legacyBehavior href="/MessagesView">
+              <a className="py-2 px-5 rounded-lg bg-yellow-600 font-medium text-white hover:bg-yellow-700 transition duration-300">Messaging</a>
+            </Link>
             <Link legacyBehavior href="/SignUp">
               <a className="py-2 px-5 rounded-lg bg-purple-800 font-medium text-white hover:bg-purple-900 transition duration-300">Sign Up / Sign In</a>
             </Link>

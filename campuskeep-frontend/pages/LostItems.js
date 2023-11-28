@@ -37,7 +37,7 @@ const DisplayListings = () => {
       <Navbar/>
 
       <div className="min-h-screen flex flex-col items-center justify-center bg-purple-900 text-black-200">
-        <div className="w-3/4 p-8 bg-neutral-100 rounded shadow-md">
+        <div className="w-3/4 p-8 bg-neutral-100 rounded shadow-md my-20">
 
           <div id='title-area' className='flex justify-between mb-14'>
             <h1 className="text-4xl font-bold mb-8 text-black-200">Recently found items</h1>
