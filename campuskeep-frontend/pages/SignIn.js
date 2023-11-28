@@ -32,22 +32,25 @@ const SignIn = () => {
     setIsError(false);
 
     try {
-        console.log(formData)
-        const response = await axios.post('http://127.0.0.1:8000/users/login/', formData);
-        setMessage(response.data.message);
+      console.log(formData)
+      const response = await axios.post('http://127.0.0.1:8000/users/login/', formData);
+      setMessage(response.data.message);
 
-        const timer = setTimeout(() => {
-          router.push('/');
-        }, 2000);
+      const jwtToken = response.data.jwt;
+      localStorage.setItem('jwtToken', jwtToken);
+
+      const timer = setTimeout(() => {
+        router.push('/');
+      }, 2000);
         
     } 
     catch (error) {
-        setIsError(true);
-        if (error.response && error.response.data) {
-            setMessage(error.response.data.message);
-        } else {
-            setMessage('Error creating user');
-        }
+      setIsError(true);
+      if (error.response && error.response.data) {
+          setMessage(error.response.data.message);
+      } else {
+          setMessage('Error creating user');
+      }
     }
 
     console.log(message);

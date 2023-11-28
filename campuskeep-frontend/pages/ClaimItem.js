@@ -1,63 +1,131 @@
 import React, { useState, useEffect } from 'react';
-import { useRouter } from 'next/router';
 import { Box, Text, Input, Stack, Button } from '@chakra-ui/react';
 import Navbar from '../components/Navbar';
+import axios from 'axios';
+import { useRouter } from 'next/router';
+
+
 
 const ClaimItem = () => {
+
   const router = useRouter();
   const { id } = router.query;
 
-  // Dummy data for the listings
-  const listingsData = [
-    { id: 1, title: 'iphone 11', description: 'Found by the cupola', image: '/images/dummyitem.webp' },
-    { id: 2, title: 'ECU Hoodie', description: 'I found this hoodie in the Isley innovation hub, Id like to get it back to its owner!', image: '/images/dummyitem2.jpg' },
-    { id: 3, title: 'airpods', description: 'Found sum airpods', image: '/images/dummyitem3.jpg' },
-  ];
+  const [item, setItem] = useState({});
+  const [itemId, setItemId] = useState(0);
+  const [currentUser, setCurrentUser] = useState(0);
 
-  const [claimedItems, setClaimedItems] = useState([]);
-  const [currentItem, setCurrentItem] = useState(null);
+  const [inputs, setInputs] = useState({
+    answer1: '',
+    answer2: '',
+    answer3: '',
+  });
+
+  const [additionalData, setAdditionalData] = useState({
+    claimed_by: currentUser,
+    item_id: itemId,
+    finder: 1,
+    is_valid: false
+  });
+
+  async function sendJwtToServer() {
+    try {
+      const jwtToken = localStorage.getItem('jwtToken');
+      const response = await axios.post('http://127.0.0.1:8000/users/info/', {
+        jwt: jwtToken
+      });
+      console.log('Response from server:', response.data);
+      setCurrentUser(request.data.id);
+    } 
+    catch (error) {
+      console.error('Error in sending JWT to server:', error);
+    }
+  }
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setInputs(prev => ({
+      ...prev,
+      [name]: value
+    }));
+  };
+
+
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      console.log(inputs);
+      const response = await axios.post('http://127.0.0.1:8000/claims/', inputs);
+      console.log(response.data);
+
+      const timer = setTimeout(() => {
+        router.push('/LostItems');
+      }, 2000);
+    } 
+    catch (error) {
+      console.error('Error sending the POST request:', error);
+    }
+  };
+
+
 
   useEffect(() => {
-    // Find the item based on the ID from the route parameters
-    const item = listingsData.find((item) => String(item.id) === String(id));
-    setCurrentItem(item);
-  }, [id]);
+    fetchItemById(id);
+    sendJwtToServer();
+  }, []);
 
-  const handleClaim = () => {
-    // Add the claimed item to the claimedItems state
-    setClaimedItems([...claimedItems, currentItem.id]);
-  };
+
+  async function fetchItemById(itemId) {
+    try {
+      const response = await axios.post('http://127.0.0.1:8000/itemById/', {
+        item_id: itemId
+      });
+      setItem(response.data);
+      setItemId(response.data.id);
+    } 
+    catch (error) {
+      console.error('Error making the POST request:', error);
+    }
+  }
+
+
 
   return (
     <>
       <Navbar />
-      <div className="flex items-center justify-center h-screen bg-violet-900 text-black-200">
-        <div className="w-3/4 p-8 bg-white rounded-md shadow-md">
-          <h1 className="text-4xl font-bold mb-8 text-violet-900">Claim an item</h1>
-          {currentItem ? (
-            <div className="flex items-center justify-center grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              <div className="bg-white p-4 rounded-md shadow-md mb-4">
-                <img src={currentItem.image} alt={currentItem.title} className="mb-2 rounded-md" />
-                <h2 className="text-xl mb-2 text-grey-300">{currentItem.title}</h2>
-                <p className="text-gray-600">{currentItem.description}</p>
-                {claimedItems.includes(currentItem.id) && (
-                  <Text color="red.500">Claim submitted! Now wait for the finder to respond</Text>
-                )}
-              </div>
-              <Stack spacing={4} ml={4}>
-                <Input placeholder="Answer 1" />
-                <Input placeholder="Answer 2" />
-                <Input placeholder="Answer 3" />
-                <Button colorScheme="yellow" onClick={handleClaim} className="mt-2">
-                  Claim Item
-                </Button>
-              </Stack>
-            </div>
-          ) : (
-            <p>Loading...</p>
-          )}
-        </div>
-      </div>
+      <h1 className='text-center text-4xl font-bold text-purple-900 mt-20'>Claim Item</h1>
+      <h1 className='text-center text-lg font-bold mt-4 mb-10'>{item.name}</h1>
+      <form onSubmit={handleSubmit} className='flex flex-col items-center justify-center'>
+        <label className=''>Q1. {item.question1}</label>
+        <input
+          type="text"
+          name="answer1"
+          value={inputs.answer1}
+          onChange={handleChange}
+          placeholder="Answer 1"
+          className='border p-2 mb-4'
+        />
+        <label>Q1. {item.question2}</label>
+        <input
+          type="text"
+          name="answer2"
+          value={inputs.answer2}
+          onChange={handleChange}
+          placeholder="Answer 2"
+          className='border p-2 mb-4'
+        />
+        <label>Q1. {item.question3}</label>
+        <input
+          type="text"
+          name="answer3"
+          value={inputs.answer3}
+          onChange={handleChange}
+          placeholder="Answer 3"
+          className='border p-2 mb-4'
+        />
+        <button type="submit" className='bg-purple-900 mt-10 text-white font-bold rounded-lg px-10 py-2'>Submit</button>
+    </form>
     </>
   );
 };

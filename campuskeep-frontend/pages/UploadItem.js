@@ -95,7 +95,7 @@ const UploadItem = () => {
               />
             </div>
 
-            <div>
+            {/* <div>
               <label className="block text-black-300 font-bold">Item Image:</label>
               <input
                 type="file"
@@ -103,7 +103,7 @@ const UploadItem = () => {
                 onChange={(e) => setImage(e.target.files[0])}
                 className="border p-2 w-full rounded focus:outline-none focus:ring focus:border-purple-500"
               />
-            </div>
+            </div> */}
 
             <div>
               <label className="block text-black-300 font-bold">Security Question 1:</label>

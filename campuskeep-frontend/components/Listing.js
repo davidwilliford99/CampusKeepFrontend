@@ -7,8 +7,6 @@ const Listing = (props) => {
   const description = props.description;
   const category = props.category;
 
-  const [image, setImage] = useState('');
-
 
   // setting default image
 

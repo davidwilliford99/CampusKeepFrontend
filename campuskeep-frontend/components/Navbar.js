@@ -1,6 +1,6 @@
 "use client"
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { Box, Menu, MenuButton, MenuList, MenuItem } from '@chakra-ui/react';
@@ -8,11 +8,19 @@ import { Box, Menu, MenuButton, MenuList, MenuItem } from '@chakra-ui/react';
 const Navbar = () => {
   
   const [selectedCategory, setSelectedCategory] = useState('');
+  const [hasJwt, setHasJwt] = useState(false);
 
   const handleCategoryChange = (category) => {
     setSelectedCategory(category);
     router.push(`/LostItems?category=${category}`);
   };
+
+  useEffect(() => {
+    const jwt = localStorage.getItem('jwt');
+    if (jwt) {
+      setHasJwt(true);
+    }
+  }, []);
 
   return (
     <nav className="bg-white shadow-lg" style={{height: "12vh"}}>
@@ -75,9 +83,13 @@ const Navbar = () => {
             <Link legacyBehavior href="/MessagesView">
               <a className="py-2 px-5 rounded-lg bg-yellow-600 font-medium text-white hover:bg-yellow-700 transition duration-300">Messaging</a>
             </Link>
-            <Link legacyBehavior href="/SignUp">
-              <a className="py-2 px-5 rounded-lg bg-purple-800 font-medium text-white hover:bg-purple-900 transition duration-300">Sign Up / Sign In</a>
-            </Link>
+
+            {!hasJwt && (
+              <Link legacyBehavior href="/SignUp">
+                <a className="py-2 px-5 rounded-lg bg-purple-800 font-medium text-white hover:bg-purple-900 transition duration-300">Sign Up / Sign In</a>
+              </Link>
+            )}
+
           </div>
         </div>
       </div>
