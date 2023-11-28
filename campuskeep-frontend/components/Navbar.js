@@ -65,6 +65,9 @@ const Navbar = () => {
               <Link legacyBehavior href="/LostItems">
                 <a className="py-4 px-4 text-gray-500 hover:text-gray-700 transition duration-300">Lost Items</a>
               </Link>
+              <Link legacyBehavior href="/MessagesView">
+                <a className="py-4 px-4 text-gray-500 hover:text-gray-700 transition duration-300">View your Messages</a>
+              </Link>
             </div>
           </div>
           {/* Secondary Navbar items */}
