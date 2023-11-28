@@ -1,4 +1,4 @@
-// DisplayListings.js
+
 import React, { useState, useEffect } from 'react';
 import Listing from '../components/Listing';
 import { Box, Select } from '@chakra-ui/react';
@@ -29,7 +29,6 @@ const DisplayListings = () => {
     router.push(`/LostItems?category=${category}`);
   };
 
-  // Dummy data for the listings
 
 
   return (
