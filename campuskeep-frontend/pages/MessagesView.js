@@ -9,8 +9,8 @@ const MessagesView = () => {
   const { userId } = router.query;
 
   const [conversations, setConversations] = useState([
-    { userId: 'john', username: 'John Doe', lastMessage: 'Hello!', unreadCount: 2 },
-    { userId: 'jane', username: 'Jane Smith', lastMessage: 'Hi there!', unreadCount: 0 },
+    { userId: 'NCStateFan', username: 'BigLoser', lastMessage: 'Hello Peedee, I think the hat you found is mine!', unreadCount: 2 },
+    
   ]);
 
   useEffect(() => {
