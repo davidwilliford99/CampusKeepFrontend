@@ -9,16 +9,22 @@ const Navbar = () => {
   
   const [selectedCategory, setSelectedCategory] = useState('');
   const [hasJwt, setHasJwt] = useState(false);
+  const [isAdmin, setIsAdmin] = useState(false);
 
   const handleCategoryChange = (category) => {
     setSelectedCategory(category);
     router.push(`/LostItems?category=${category}`);
   };
 
+  const handleLogout = () => {
+    localStorage.removeItem('jwtToken');
+  };
+
   useEffect(() => {
-    const jwt = localStorage.getItem('jwt');
+    const jwt = localStorage.getItem('jwtToken');
     if (jwt) {
       setHasJwt(true);
+      setIsAdmin(true);
     }
   }, []);
 
@@ -76,6 +82,14 @@ const Navbar = () => {
               <Link legacyBehavior href="/UploadItem">
                 <a className="py-4 px-4 text-gray-500 hover:text-gray-700 transition duration-300">Upload Item</a>
               </Link>
+              {
+                hasJwt && (
+                  <Link legacyBehavior href="/Admin">
+                    <a className="py-4 px-4 text-gray-500 hover:text-gray-700 transition duration-300">Admin Page</a>
+                  </Link>
+                )
+              }
+
             </div>
           </div>
           {/* Secondary Navbar items */}
@@ -89,6 +103,13 @@ const Navbar = () => {
                 <a className="py-2 px-5 rounded-lg bg-purple-800 font-medium text-white hover:bg-purple-900 transition duration-300">Sign Up / Sign In</a>
               </Link>
             )}
+            {hasJwt && (
+              <Link legacyBehavior href="/" passHref>
+                <a onClick={handleLogout} className="py-2 px-5 rounded-lg bg-purple-800 font-medium text-white hover:bg-purple-900 transition duration-300">Logout</a>
+              </Link>
+            )}
+
+
 
           </div>
         </div>
